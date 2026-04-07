@@ -10,7 +10,16 @@ paths:
   /documents:
     post:
       operationId: DocumentController_uploadDocument
-      parameters: []
+      parameters:
+      - description: "user's email address (for enterprise use only, end-client should\
+          \ skip this header)"
+        explode: false
+        in: header
+        name: x-client-email
+        required: false
+        schema:
+          type: string
+        style: simple
       requestBody:
         content:
           multipart/form-data:
@@ -22,8 +31,9 @@ paths:
           content:
             application/json:
               schema:
+                example: 783b69a1-0a...
                 type: string
-          description: ""
+          description: File upload successful. Document is processed asynchronously.
       security:
       - bearer: []
       summary: Uploading a new document
@@ -50,7 +60,7 @@ paths:
               $ref: "#/components/schemas/AuthDTO"
         required: true
       responses:
-        "200":
+        "201":
           content:
             application/json:
               schema:
@@ -60,12 +70,6 @@ paths:
                   expires_in: 3600
           description: Successfully authenticated. Access token returned with doc/upload
             scope.
-        "201":
-          content:
-            application/json:
-              schema:
-                type: object
-          description: ""
         "401":
           description: Invalid client credentials provided.
       summary: Authenticate and retrieve OAuth2 token
@@ -127,12 +131,8 @@ paths:
               $ref: "#/components/schemas/ImportClientsDTO"
         required: true
       responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                example: {}
-          description: Clients successfully imported. Returns an empty response body.
+        "204":
+          description: Clients successfully imported. Returns no content.
         "400":
           description: Invalid request body. Ensure clients array has at least 1 item
             and all fields are valid.
@@ -213,19 +213,23 @@ components:
           format: binary
           type: string
         monetized:
+          description: Monetized documents will contribute to building the client's
+            profile
           type: boolean
         fileHash:
           type: string
         derivedKey:
-          description: "required for end-client use only, enterprise should skip this\
-            \ property"
+          description: "(for end-client use only, enterprise should skip this property)"
           type: string
         password:
-          description: user's decryption password
+          description: "user's decryption password (for end-client use only, enterprise\
+            \ should skip this property)"
           type: string
         isID:
+          description: "(for end-client use only, enterprise should skip this property)"
           type: boolean
         taskId:
+          description: "(for end-client use only, enterprise should skip this property)"
           type: string
       required:
       - file

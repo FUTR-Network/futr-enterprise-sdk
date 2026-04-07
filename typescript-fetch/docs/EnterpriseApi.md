@@ -71,8 +71,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully authenticated. Access token returned with doc/upload scope. |  -  |
-| **201** |  |  -  |
+| **201** | Successfully authenticated. Access token returned with doc/upload scope. |  -  |
 | **401** | Invalid client credentials provided. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
@@ -80,7 +79,7 @@ No authorization required
 
 ## enterpriseControllerImportClients
 
-> any enterpriseControllerImportClients(importClientsDTO)
+> enterpriseControllerImportClients(importClientsDTO)
 
 Import enterprise clients
 
@@ -129,7 +128,7 @@ example().catch(console.error);
 
 ### Return type
 
-**any**
+`void` (Empty response body)
 
 ### Authorization
 
@@ -138,13 +137,13 @@ example().catch(console.error);
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/json`
+- **Accept**: Not defined
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Clients successfully imported. Returns an empty response body. |  -  |
+| **204** | Clients successfully imported. Returns no content. |  -  |
 | **400** | Invalid request body. Ensure clients array has at least 1 item and all fields are valid. |  -  |
 | **401** | Unauthorized. Invalid or missing OAuth2 token. |  -  |
 | **403** | Forbidden. Your organization does not have enterprise access. |  -  |

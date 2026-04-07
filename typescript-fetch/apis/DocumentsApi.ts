@@ -19,6 +19,7 @@ export interface DocumentControllerUploadDocumentRequest {
     file: Blob;
     monetized: boolean;
     fileHash: string;
+    xClientEmail?: string;
     derivedKey?: string;
     password?: string;
     isID?: boolean;
@@ -58,6 +59,10 @@ export class DocumentsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters['xClientEmail'] != null) {
+            headerParameters['x-client-email'] = String(requestParameters['xClientEmail']);
+        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;

@@ -146,7 +146,7 @@ func (r ApiEnterpriseControllerImportClientsRequest) ImportClientsDTO(importClie
 	return r
 }
 
-func (r ApiEnterpriseControllerImportClientsRequest) Execute() (interface{}, *http.Response, error) {
+func (r ApiEnterpriseControllerImportClientsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.EnterpriseControllerImportClientsExecute(r)
 }
 
@@ -193,18 +193,16 @@ func (a *EnterpriseAPIService) EnterpriseControllerImportClients(ctx context.Con
 }
 
 // Execute executes the request
-//  @return interface{}
-func (a *EnterpriseAPIService) EnterpriseControllerImportClientsExecute(r ApiEnterpriseControllerImportClientsRequest) (interface{}, *http.Response, error) {
+func (a *EnterpriseAPIService) EnterpriseControllerImportClientsExecute(r ApiEnterpriseControllerImportClientsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnterpriseAPIService.EnterpriseControllerImportClients")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/enterprise/import-clients"
@@ -213,7 +211,7 @@ func (a *EnterpriseAPIService) EnterpriseControllerImportClientsExecute(r ApiEnt
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.importClientsDTO == nil {
-		return localVarReturnValue, nil, reportError("importClientsDTO is required and must be specified")
+		return nil, reportError("importClientsDTO is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -226,7 +224,7 @@ func (a *EnterpriseAPIService) EnterpriseControllerImportClientsExecute(r ApiEnt
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -237,19 +235,19 @@ func (a *EnterpriseAPIService) EnterpriseControllerImportClientsExecute(r ApiEnt
 	localVarPostBody = r.importClientsDTO
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -257,17 +255,8 @@ func (a *EnterpriseAPIService) EnterpriseControllerImportClientsExecute(r ApiEnt
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }

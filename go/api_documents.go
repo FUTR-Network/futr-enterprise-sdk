@@ -29,6 +29,7 @@ type ApiDocumentControllerUploadDocumentRequest struct {
 	file *os.File
 	monetized *bool
 	fileHash *string
+	xClientEmail *string
 	derivedKey *string
 	password *string
 	isID *bool
@@ -40,6 +41,7 @@ func (r ApiDocumentControllerUploadDocumentRequest) File(file *os.File) ApiDocum
 	return r
 }
 
+// Monetized documents will contribute to building the client&#39;s profile
 func (r ApiDocumentControllerUploadDocumentRequest) Monetized(monetized bool) ApiDocumentControllerUploadDocumentRequest {
 	r.monetized = &monetized
 	return r
@@ -50,23 +52,31 @@ func (r ApiDocumentControllerUploadDocumentRequest) FileHash(fileHash string) Ap
 	return r
 }
 
-// required for end-client use only, enterprise should skip this property
+// user&#39;s email address (for enterprise use only, end-client should skip this header)
+func (r ApiDocumentControllerUploadDocumentRequest) XClientEmail(xClientEmail string) ApiDocumentControllerUploadDocumentRequest {
+	r.xClientEmail = &xClientEmail
+	return r
+}
+
+// (for end-client use only, enterprise should skip this property)
 func (r ApiDocumentControllerUploadDocumentRequest) DerivedKey(derivedKey string) ApiDocumentControllerUploadDocumentRequest {
 	r.derivedKey = &derivedKey
 	return r
 }
 
-// user&#39;s decryption password
+// user&#39;s decryption password (for end-client use only, enterprise should skip this property)
 func (r ApiDocumentControllerUploadDocumentRequest) Password(password string) ApiDocumentControllerUploadDocumentRequest {
 	r.password = &password
 	return r
 }
 
+// (for end-client use only, enterprise should skip this property)
 func (r ApiDocumentControllerUploadDocumentRequest) IsID(isID bool) ApiDocumentControllerUploadDocumentRequest {
 	r.isID = &isID
 	return r
 }
 
+// (for end-client use only, enterprise should skip this property)
 func (r ApiDocumentControllerUploadDocumentRequest) TaskId(taskId string) ApiDocumentControllerUploadDocumentRequest {
 	r.taskId = &taskId
 	return r
@@ -135,6 +145,9 @@ func (a *DocumentsAPIService) DocumentControllerUploadDocumentExecute(r ApiDocum
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xClientEmail != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "x-client-email", r.xClientEmail, "simple", "")
 	}
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileName     string

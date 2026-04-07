@@ -10,7 +10,7 @@ All URIs are relative to *http://localhost*
 
 ## documentControllerUploadDocument
 
-> string documentControllerUploadDocument(file, monetized, fileHash, derivedKey, password, isID, taskId)
+> string documentControllerUploadDocument(file, monetized, fileHash, xClientEmail, derivedKey, password, isID, taskId)
 
 Uploading a new document
 
@@ -34,17 +34,19 @@ async function example() {
   const body = {
     // Blob
     file: BINARY_DATA_HERE,
-    // boolean
+    // boolean | Monetized documents will contribute to building the client\\\'s profile
     monetized: true,
     // string
     fileHash: fileHash_example,
-    // string | required for end-client use only, enterprise should skip this property (optional)
+    // string | user\'s email address (for enterprise use only, end-client should skip this header) (optional)
+    xClientEmail: xClientEmail_example,
+    // string | (for end-client use only, enterprise should skip this property) (optional)
     derivedKey: derivedKey_example,
-    // string | user\\\'s decryption password (optional)
+    // string | user\\\'s decryption password (for end-client use only, enterprise should skip this property) (optional)
     password: password_example,
-    // boolean (optional)
+    // boolean | (for end-client use only, enterprise should skip this property) (optional)
     isID: true,
-    // string (optional)
+    // string | (for end-client use only, enterprise should skip this property) (optional)
     taskId: taskId_example,
   } satisfies DocumentControllerUploadDocumentRequest;
 
@@ -66,12 +68,13 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **file** | `Blob` |  | [Defaults to `undefined`] |
-| **monetized** | `boolean` |  | [Defaults to `undefined`] |
+| **monetized** | `boolean` | Monetized documents will contribute to building the client\\\&#39;s profile | [Defaults to `undefined`] |
 | **fileHash** | `string` |  | [Defaults to `undefined`] |
-| **derivedKey** | `string` | required for end-client use only, enterprise should skip this property | [Optional] [Defaults to `undefined`] |
-| **password** | `string` | user\\\&#39;s decryption password | [Optional] [Defaults to `undefined`] |
-| **isID** | `boolean` |  | [Optional] [Defaults to `undefined`] |
-| **taskId** | `string` |  | [Optional] [Defaults to `undefined`] |
+| **xClientEmail** | `string` | user\&#39;s email address (for enterprise use only, end-client should skip this header) | [Optional] [Defaults to `undefined`] |
+| **derivedKey** | `string` | (for end-client use only, enterprise should skip this property) | [Optional] [Defaults to `undefined`] |
+| **password** | `string` | user\\\&#39;s decryption password (for end-client use only, enterprise should skip this property) | [Optional] [Defaults to `undefined`] |
+| **isID** | `boolean` | (for end-client use only, enterprise should skip this property) | [Optional] [Defaults to `undefined`] |
+| **taskId** | `string` | (for end-client use only, enterprise should skip this property) | [Optional] [Defaults to `undefined`] |
 
 ### Return type
 
@@ -90,7 +93,7 @@ example().catch(console.error);
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** |  |  -  |
+| **201** | File upload successful. Document is processed asynchronously. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

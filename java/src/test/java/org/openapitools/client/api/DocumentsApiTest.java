@@ -41,11 +41,12 @@ public class DocumentsApiTest {
         File _file = null;
         Boolean monetized = null;
         String fileHash = null;
+        String xClientEmail = null;
         String derivedKey = null;
         String password = null;
         Boolean isID = null;
         String taskId = null;
-        String response = api.documentControllerUploadDocument(_file, monetized, fileHash, derivedKey, password, isID, taskId);
+        String response = api.documentControllerUploadDocument(_file, monetized, fileHash, xClientEmail, derivedKey, password, isID, taskId);
         // TODO: test validations
     }
 

@@ -75,14 +75,13 @@ No authorization required
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successfully authenticated. Access token returned with doc/upload scope. |  -  |
-**201** |  |  -  |
+**201** | Successfully authenticated. Access token returned with doc/upload scope. |  -  |
 **401** | Invalid client credentials provided. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **enterprise_controller_import_clients**
-> object enterprise_controller_import_clients(import_clients_dto)
+> enterprise_controller_import_clients(import_clients_dto)
 
 Import enterprise clients
 
@@ -149,9 +148,7 @@ with openapi_client.ApiClient(configuration) as api_client:
 
     try:
         # Import enterprise clients
-        api_response = api_instance.enterprise_controller_import_clients(import_clients_dto)
-        print("The response of EnterpriseApi->enterprise_controller_import_clients:\n")
-        pprint(api_response)
+        api_instance.enterprise_controller_import_clients(import_clients_dto)
     except Exception as e:
         print("Exception when calling EnterpriseApi->enterprise_controller_import_clients: %s\n" % e)
 ```
@@ -167,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+void (empty response body)
 
 ### Authorization
 
@@ -176,13 +173,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Clients successfully imported. Returns an empty response body. |  -  |
+**204** | Clients successfully imported. Returns no content. |  -  |
 **400** | Invalid request body. Ensure clients array has at least 1 item and all fields are valid. |  -  |
 **401** | Unauthorized. Invalid or missing OAuth2 token. |  -  |
 **403** | Forbidden. Your organization does not have enterprise access. |  -  |

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **document_controller_upload_document**
-> str document_controller_upload_document(file, monetized, file_hash, derived_key=derived_key, password=password, is_id=is_id, task_id=task_id)
+> str document_controller_upload_document(file, monetized, file_hash, x_client_email=x_client_email, derived_key=derived_key, password=password, is_id=is_id, task_id=task_id)
 
 Uploading a new document
 
@@ -42,16 +42,17 @@ with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openapi_client.DocumentsApi(api_client)
     file = None # bytes | 
-    monetized = True # bool | 
+    monetized = True # bool | Monetized documents will contribute to building the client's profile
     file_hash = 'file_hash_example' # str | 
-    derived_key = 'derived_key_example' # str | required for end-client use only, enterprise should skip this property (optional)
-    password = 'password_example' # str | user's decryption password (optional)
-    is_id = True # bool |  (optional)
-    task_id = 'task_id_example' # str |  (optional)
+    x_client_email = 'x_client_email_example' # str | user's email address (for enterprise use only, end-client should skip this header) (optional)
+    derived_key = 'derived_key_example' # str | (for end-client use only, enterprise should skip this property) (optional)
+    password = 'password_example' # str | user's decryption password (for end-client use only, enterprise should skip this property) (optional)
+    is_id = True # bool | (for end-client use only, enterprise should skip this property) (optional)
+    task_id = 'task_id_example' # str | (for end-client use only, enterprise should skip this property) (optional)
 
     try:
         # Uploading a new document
-        api_response = api_instance.document_controller_upload_document(file, monetized, file_hash, derived_key=derived_key, password=password, is_id=is_id, task_id=task_id)
+        api_response = api_instance.document_controller_upload_document(file, monetized, file_hash, x_client_email=x_client_email, derived_key=derived_key, password=password, is_id=is_id, task_id=task_id)
         print("The response of DocumentsApi->document_controller_upload_document:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,12 +67,13 @@ with openapi_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **file** | **bytes**|  | 
- **monetized** | **bool**|  | 
+ **monetized** | **bool**| Monetized documents will contribute to building the client&#39;s profile | 
  **file_hash** | **str**|  | 
- **derived_key** | **str**| required for end-client use only, enterprise should skip this property | [optional] 
- **password** | **str**| user&#39;s decryption password | [optional] 
- **is_id** | **bool**|  | [optional] 
- **task_id** | **str**|  | [optional] 
+ **x_client_email** | **str**| user&#39;s email address (for enterprise use only, end-client should skip this header) | [optional] 
+ **derived_key** | **str**| (for end-client use only, enterprise should skip this property) | [optional] 
+ **password** | **str**| user&#39;s decryption password (for end-client use only, enterprise should skip this property) | [optional] 
+ **is_id** | **bool**| (for end-client use only, enterprise should skip this property) | [optional] 
+ **task_id** | **str**| (for end-client use only, enterprise should skip this property) | [optional] 
 
 ### Return type
 
@@ -90,7 +92,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** |  |  -  |
+**201** | File upload successful. Document is processed asynchronously. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -91,7 +91,6 @@ class EnterpriseApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
             '201': "object",
             '401': None,
         }
@@ -160,7 +159,6 @@ class EnterpriseApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
             '201': "object",
             '401': None,
         }
@@ -229,7 +227,6 @@ class EnterpriseApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
             '201': "object",
             '401': None,
         }
@@ -332,7 +329,7 @@ class EnterpriseApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
+    ) -> None:
         """Import enterprise clients
 
         Imports a list of clients into your organization. Requires a valid OAuth2 access token obtained from the /auth endpoint. Each client will be added to your organization with the provided email and unique external client ID.  The clientId will serve as an external identifier to track which enterprise client each consumer belongs to. Critically, this clientId mapping determines document upload behavior: documents uploaded by imported clients will be stored unencrypted (enterprise-managed storage). Clients will be created in Cognito if they do not already exist, and their association with your organization and the provided clientId will be stored in the system.  Import Format: A customer-generated CSV file will be used to onboard multiple users in bulk. The CSV file will have the following format:  clientEmail,clientId  When using the Brands App, the user's email will be used as the clientEmail and the initial password will be an OTP sent to the user's email. The clientId will be any unique identifier from your enterprise system that you want to associate with this client. This will allow you to maintain a mapping between your enterprise system and the consumers created in this platform, and will enable unencrypted document storage for these clients.  
@@ -370,7 +367,7 @@ class EnterpriseApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "object",
+            '204': None,
             '400': None,
             '401': None,
             '403': None,
@@ -402,7 +399,7 @@ class EnterpriseApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
+    ) -> ApiResponse[None]:
         """Import enterprise clients
 
         Imports a list of clients into your organization. Requires a valid OAuth2 access token obtained from the /auth endpoint. Each client will be added to your organization with the provided email and unique external client ID.  The clientId will serve as an external identifier to track which enterprise client each consumer belongs to. Critically, this clientId mapping determines document upload behavior: documents uploaded by imported clients will be stored unencrypted (enterprise-managed storage). Clients will be created in Cognito if they do not already exist, and their association with your organization and the provided clientId will be stored in the system.  Import Format: A customer-generated CSV file will be used to onboard multiple users in bulk. The CSV file will have the following format:  clientEmail,clientId  When using the Brands App, the user's email will be used as the clientEmail and the initial password will be an OTP sent to the user's email. The clientId will be any unique identifier from your enterprise system that you want to associate with this client. This will allow you to maintain a mapping between your enterprise system and the consumers created in this platform, and will enable unencrypted document storage for these clients.  
@@ -440,7 +437,7 @@ class EnterpriseApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "object",
+            '204': None,
             '400': None,
             '401': None,
             '403': None,
@@ -510,7 +507,7 @@ class EnterpriseApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "object",
+            '204': None,
             '400': None,
             '401': None,
             '403': None,
@@ -554,13 +551,6 @@ class EnterpriseApi:
             _body_params = import_clients_dto
 
 
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
 
         # set the HTTP header `Content-Type`
         if _content_type:

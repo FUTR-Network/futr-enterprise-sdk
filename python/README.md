@@ -77,16 +77,17 @@ with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openapi_client.DocumentsApi(api_client)
     file = None # bytes | 
-    monetized = True # bool | 
+    monetized = True # bool | Monetized documents will contribute to building the client's profile
     file_hash = 'file_hash_example' # str | 
-    derived_key = 'derived_key_example' # str | required for end-client use only, enterprise should skip this property (optional)
-    password = 'password_example' # str | user's decryption password (optional)
-    is_id = True # bool |  (optional)
-    task_id = 'task_id_example' # str |  (optional)
+    x_client_email = 'x_client_email_example' # str | user's email address (for enterprise use only, end-client should skip this header) (optional)
+    derived_key = 'derived_key_example' # str | (for end-client use only, enterprise should skip this property) (optional)
+    password = 'password_example' # str | user's decryption password (for end-client use only, enterprise should skip this property) (optional)
+    is_id = True # bool | (for end-client use only, enterprise should skip this property) (optional)
+    task_id = 'task_id_example' # str | (for end-client use only, enterprise should skip this property) (optional)
 
     try:
         # Uploading a new document
-        api_response = api_instance.document_controller_upload_document(file, monetized, file_hash, derived_key=derived_key, password=password, is_id=is_id, task_id=task_id)
+        api_response = api_instance.document_controller_upload_document(file, monetized, file_hash, x_client_email=x_client_email, derived_key=derived_key, password=password, is_id=is_id, task_id=task_id)
         print("The response of DocumentsApi->document_controller_upload_document:\n")
         pprint(api_response)
     except ApiException as e:

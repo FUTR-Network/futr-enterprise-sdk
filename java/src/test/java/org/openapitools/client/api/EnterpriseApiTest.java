@@ -56,7 +56,7 @@ public class EnterpriseApiTest {
     @Test
     public void enterpriseControllerImportClientsTest() throws ApiException {
         ImportClientsDTO importClientsDTO = null;
-        Object response = api.enterpriseControllerImportClients(importClientsDTO);
+        api.enterpriseControllerImportClients(importClientsDTO);
         // TODO: test validations
     }
 

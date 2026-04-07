@@ -77,7 +77,7 @@ No authorization required
 
 ## EnterpriseControllerImportClients
 
-> interface{} EnterpriseControllerImportClients(ctx).ImportClientsDTO(importClientsDTO).Execute()
+> EnterpriseControllerImportClients(ctx).ImportClientsDTO(importClientsDTO).Execute()
 
 Import enterprise clients
 
@@ -100,13 +100,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnterpriseAPI.EnterpriseControllerImportClients(context.Background()).ImportClientsDTO(importClientsDTO).Execute()
+	r, err := apiClient.EnterpriseAPI.EnterpriseControllerImportClients(context.Background()).ImportClientsDTO(importClientsDTO).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `EnterpriseAPI.EnterpriseControllerImportClients``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `EnterpriseControllerImportClients`: interface{}
-	fmt.Fprintf(os.Stdout, "Response from `EnterpriseAPI.EnterpriseControllerImportClients`: %v\n", resp)
 }
 ```
 
@@ -125,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -134,7 +132,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

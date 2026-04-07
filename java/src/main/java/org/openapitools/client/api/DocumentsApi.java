@@ -75,12 +75,13 @@ public class DocumentsApi {
     /**
      * Build call for documentControllerUploadDocument
      * @param _file  (required)
-     * @param monetized  (required)
+     * @param monetized Monetized documents will contribute to building the client&#39;s profile (required)
      * @param fileHash  (required)
-     * @param derivedKey required for end-client use only, enterprise should skip this property (optional)
-     * @param password user&#39;s decryption password (optional)
-     * @param isID  (optional)
-     * @param taskId  (optional)
+     * @param xClientEmail user&#39;s email address (for enterprise use only, end-client should skip this header) (optional)
+     * @param derivedKey (for end-client use only, enterprise should skip this property) (optional)
+     * @param password user&#39;s decryption password (for end-client use only, enterprise should skip this property) (optional)
+     * @param isID (for end-client use only, enterprise should skip this property) (optional)
+     * @param taskId (for end-client use only, enterprise should skip this property) (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -88,10 +89,10 @@ public class DocumentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> File upload successful. Document is processed asynchronously. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call documentControllerUploadDocumentCall(@javax.annotation.Nonnull File _file, @javax.annotation.Nonnull Boolean monetized, @javax.annotation.Nonnull String fileHash, @javax.annotation.Nullable String derivedKey, @javax.annotation.Nullable String password, @javax.annotation.Nullable Boolean isID, @javax.annotation.Nullable String taskId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call documentControllerUploadDocumentCall(@javax.annotation.Nonnull File _file, @javax.annotation.Nonnull Boolean monetized, @javax.annotation.Nonnull String fileHash, @javax.annotation.Nullable String xClientEmail, @javax.annotation.Nullable String derivedKey, @javax.annotation.Nullable String password, @javax.annotation.Nullable Boolean isID, @javax.annotation.Nullable String taskId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -160,12 +161,17 @@ public class DocumentsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
+        if (xClientEmail != null) {
+            localVarHeaderParams.put("x-client-email", localVarApiClient.parameterToString(xClientEmail));
+        }
+
+
         String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call documentControllerUploadDocumentValidateBeforeCall(@javax.annotation.Nonnull File _file, @javax.annotation.Nonnull Boolean monetized, @javax.annotation.Nonnull String fileHash, @javax.annotation.Nullable String derivedKey, @javax.annotation.Nullable String password, @javax.annotation.Nullable Boolean isID, @javax.annotation.Nullable String taskId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call documentControllerUploadDocumentValidateBeforeCall(@javax.annotation.Nonnull File _file, @javax.annotation.Nonnull Boolean monetized, @javax.annotation.Nonnull String fileHash, @javax.annotation.Nullable String xClientEmail, @javax.annotation.Nullable String derivedKey, @javax.annotation.Nullable String password, @javax.annotation.Nullable Boolean isID, @javax.annotation.Nullable String taskId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter '_file' is set
         if (_file == null) {
             throw new ApiException("Missing the required parameter '_file' when calling documentControllerUploadDocument(Async)");
@@ -181,7 +187,7 @@ public class DocumentsApi {
             throw new ApiException("Missing the required parameter 'fileHash' when calling documentControllerUploadDocument(Async)");
         }
 
-        return documentControllerUploadDocumentCall(_file, monetized, fileHash, derivedKey, password, isID, taskId, _callback);
+        return documentControllerUploadDocumentCall(_file, monetized, fileHash, xClientEmail, derivedKey, password, isID, taskId, _callback);
 
     }
 
@@ -189,23 +195,24 @@ public class DocumentsApi {
      * Uploading a new document
      * 
      * @param _file  (required)
-     * @param monetized  (required)
+     * @param monetized Monetized documents will contribute to building the client&#39;s profile (required)
      * @param fileHash  (required)
-     * @param derivedKey required for end-client use only, enterprise should skip this property (optional)
-     * @param password user&#39;s decryption password (optional)
-     * @param isID  (optional)
-     * @param taskId  (optional)
+     * @param xClientEmail user&#39;s email address (for enterprise use only, end-client should skip this header) (optional)
+     * @param derivedKey (for end-client use only, enterprise should skip this property) (optional)
+     * @param password user&#39;s decryption password (for end-client use only, enterprise should skip this property) (optional)
+     * @param isID (for end-client use only, enterprise should skip this property) (optional)
+     * @param taskId (for end-client use only, enterprise should skip this property) (optional)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> File upload successful. Document is processed asynchronously. </td><td>  -  </td></tr>
      </table>
      */
-    public String documentControllerUploadDocument(@javax.annotation.Nonnull File _file, @javax.annotation.Nonnull Boolean monetized, @javax.annotation.Nonnull String fileHash, @javax.annotation.Nullable String derivedKey, @javax.annotation.Nullable String password, @javax.annotation.Nullable Boolean isID, @javax.annotation.Nullable String taskId) throws ApiException {
-        ApiResponse<String> localVarResp = documentControllerUploadDocumentWithHttpInfo(_file, monetized, fileHash, derivedKey, password, isID, taskId);
+    public String documentControllerUploadDocument(@javax.annotation.Nonnull File _file, @javax.annotation.Nonnull Boolean monetized, @javax.annotation.Nonnull String fileHash, @javax.annotation.Nullable String xClientEmail, @javax.annotation.Nullable String derivedKey, @javax.annotation.Nullable String password, @javax.annotation.Nullable Boolean isID, @javax.annotation.Nullable String taskId) throws ApiException {
+        ApiResponse<String> localVarResp = documentControllerUploadDocumentWithHttpInfo(_file, monetized, fileHash, xClientEmail, derivedKey, password, isID, taskId);
         return localVarResp.getData();
     }
 
@@ -213,23 +220,24 @@ public class DocumentsApi {
      * Uploading a new document
      * 
      * @param _file  (required)
-     * @param monetized  (required)
+     * @param monetized Monetized documents will contribute to building the client&#39;s profile (required)
      * @param fileHash  (required)
-     * @param derivedKey required for end-client use only, enterprise should skip this property (optional)
-     * @param password user&#39;s decryption password (optional)
-     * @param isID  (optional)
-     * @param taskId  (optional)
+     * @param xClientEmail user&#39;s email address (for enterprise use only, end-client should skip this header) (optional)
+     * @param derivedKey (for end-client use only, enterprise should skip this property) (optional)
+     * @param password user&#39;s decryption password (for end-client use only, enterprise should skip this property) (optional)
+     * @param isID (for end-client use only, enterprise should skip this property) (optional)
+     * @param taskId (for end-client use only, enterprise should skip this property) (optional)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> File upload successful. Document is processed asynchronously. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<String> documentControllerUploadDocumentWithHttpInfo(@javax.annotation.Nonnull File _file, @javax.annotation.Nonnull Boolean monetized, @javax.annotation.Nonnull String fileHash, @javax.annotation.Nullable String derivedKey, @javax.annotation.Nullable String password, @javax.annotation.Nullable Boolean isID, @javax.annotation.Nullable String taskId) throws ApiException {
-        okhttp3.Call localVarCall = documentControllerUploadDocumentValidateBeforeCall(_file, monetized, fileHash, derivedKey, password, isID, taskId, null);
+    public ApiResponse<String> documentControllerUploadDocumentWithHttpInfo(@javax.annotation.Nonnull File _file, @javax.annotation.Nonnull Boolean monetized, @javax.annotation.Nonnull String fileHash, @javax.annotation.Nullable String xClientEmail, @javax.annotation.Nullable String derivedKey, @javax.annotation.Nullable String password, @javax.annotation.Nullable Boolean isID, @javax.annotation.Nullable String taskId) throws ApiException {
+        okhttp3.Call localVarCall = documentControllerUploadDocumentValidateBeforeCall(_file, monetized, fileHash, xClientEmail, derivedKey, password, isID, taskId, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -238,12 +246,13 @@ public class DocumentsApi {
      * Uploading a new document (asynchronously)
      * 
      * @param _file  (required)
-     * @param monetized  (required)
+     * @param monetized Monetized documents will contribute to building the client&#39;s profile (required)
      * @param fileHash  (required)
-     * @param derivedKey required for end-client use only, enterprise should skip this property (optional)
-     * @param password user&#39;s decryption password (optional)
-     * @param isID  (optional)
-     * @param taskId  (optional)
+     * @param xClientEmail user&#39;s email address (for enterprise use only, end-client should skip this header) (optional)
+     * @param derivedKey (for end-client use only, enterprise should skip this property) (optional)
+     * @param password user&#39;s decryption password (for end-client use only, enterprise should skip this property) (optional)
+     * @param isID (for end-client use only, enterprise should skip this property) (optional)
+     * @param taskId (for end-client use only, enterprise should skip this property) (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -251,12 +260,12 @@ public class DocumentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> File upload successful. Document is processed asynchronously. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call documentControllerUploadDocumentAsync(@javax.annotation.Nonnull File _file, @javax.annotation.Nonnull Boolean monetized, @javax.annotation.Nonnull String fileHash, @javax.annotation.Nullable String derivedKey, @javax.annotation.Nullable String password, @javax.annotation.Nullable Boolean isID, @javax.annotation.Nullable String taskId, final ApiCallback<String> _callback) throws ApiException {
+    public okhttp3.Call documentControllerUploadDocumentAsync(@javax.annotation.Nonnull File _file, @javax.annotation.Nonnull Boolean monetized, @javax.annotation.Nonnull String fileHash, @javax.annotation.Nullable String xClientEmail, @javax.annotation.Nullable String derivedKey, @javax.annotation.Nullable String password, @javax.annotation.Nullable Boolean isID, @javax.annotation.Nullable String taskId, final ApiCallback<String> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = documentControllerUploadDocumentValidateBeforeCall(_file, monetized, fileHash, derivedKey, password, isID, taskId, _callback);
+        okhttp3.Call localVarCall = documentControllerUploadDocumentValidateBeforeCall(_file, monetized, fileHash, xClientEmail, derivedKey, password, isID, taskId, _callback);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

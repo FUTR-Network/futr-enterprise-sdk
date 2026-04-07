@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## DocumentControllerUploadDocument
 
-> string DocumentControllerUploadDocument(ctx).File(file).Monetized(monetized).FileHash(fileHash).DerivedKey(derivedKey).Password(password).IsID(isID).TaskId(taskId).Execute()
+> string DocumentControllerUploadDocument(ctx).File(file).Monetized(monetized).FileHash(fileHash).XClientEmail(xClientEmail).DerivedKey(derivedKey).Password(password).IsID(isID).TaskId(taskId).Execute()
 
 Uploading a new document
 
@@ -28,16 +28,17 @@ import (
 
 func main() {
 	file := os.NewFile(1234, "some_file") // *os.File | 
-	monetized := true // bool | 
+	monetized := true // bool | Monetized documents will contribute to building the client's profile
 	fileHash := "fileHash_example" // string | 
-	derivedKey := "derivedKey_example" // string | required for end-client use only, enterprise should skip this property (optional)
-	password := "password_example" // string | user's decryption password (optional)
-	isID := true // bool |  (optional)
-	taskId := "taskId_example" // string |  (optional)
+	xClientEmail := "xClientEmail_example" // string | user's email address (for enterprise use only, end-client should skip this header) (optional)
+	derivedKey := "derivedKey_example" // string | (for end-client use only, enterprise should skip this property) (optional)
+	password := "password_example" // string | user's decryption password (for end-client use only, enterprise should skip this property) (optional)
+	isID := true // bool | (for end-client use only, enterprise should skip this property) (optional)
+	taskId := "taskId_example" // string | (for end-client use only, enterprise should skip this property) (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DocumentsAPI.DocumentControllerUploadDocument(context.Background()).File(file).Monetized(monetized).FileHash(fileHash).DerivedKey(derivedKey).Password(password).IsID(isID).TaskId(taskId).Execute()
+	resp, r, err := apiClient.DocumentsAPI.DocumentControllerUploadDocument(context.Background()).File(file).Monetized(monetized).FileHash(fileHash).XClientEmail(xClientEmail).DerivedKey(derivedKey).Password(password).IsID(isID).TaskId(taskId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DocumentsAPI.DocumentControllerUploadDocument``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,12 +60,13 @@ Other parameters are passed through a pointer to a apiDocumentControllerUploadDo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **file** | ***os.File** |  | 
- **monetized** | **bool** |  | 
+ **monetized** | **bool** | Monetized documents will contribute to building the client&#39;s profile | 
  **fileHash** | **string** |  | 
- **derivedKey** | **string** | required for end-client use only, enterprise should skip this property | 
- **password** | **string** | user&#39;s decryption password | 
- **isID** | **bool** |  | 
- **taskId** | **string** |  | 
+ **xClientEmail** | **string** | user&#39;s email address (for enterprise use only, end-client should skip this header) | 
+ **derivedKey** | **string** | (for end-client use only, enterprise should skip this property) | 
+ **password** | **string** | user&#39;s decryption password (for end-client use only, enterprise should skip this property) | 
+ **isID** | **bool** | (for end-client use only, enterprise should skip this property) | 
+ **taskId** | **string** | (for end-client use only, enterprise should skip this property) | 
 
 ### Return type
 

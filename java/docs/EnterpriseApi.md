@@ -68,13 +68,12 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Successfully authenticated. Access token returned with doc/upload scope. |  -  |
-| **201** |  |  -  |
+| **201** | Successfully authenticated. Access token returned with doc/upload scope. |  -  |
 | **401** | Invalid client credentials provided. |  -  |
 
 <a id="enterpriseControllerImportClients"></a>
 # **enterpriseControllerImportClients**
-> Object enterpriseControllerImportClients(importClientsDTO)
+> enterpriseControllerImportClients(importClientsDTO)
 
 Import enterprise clients
 
@@ -102,8 +101,7 @@ public class Example {
     EnterpriseApi apiInstance = new EnterpriseApi(defaultClient);
     ImportClientsDTO importClientsDTO = new ImportClientsDTO(); // ImportClientsDTO | 
     try {
-      Object result = apiInstance.enterpriseControllerImportClients(importClientsDTO);
-      System.out.println(result);
+      apiInstance.enterpriseControllerImportClients(importClientsDTO);
     } catch (ApiException e) {
       System.err.println("Exception when calling EnterpriseApi#enterpriseControllerImportClients");
       System.err.println("Status code: " + e.getCode());
@@ -123,7 +121,7 @@ public class Example {
 
 ### Return type
 
-**Object**
+null (empty response body)
 
 ### Authorization
 
@@ -132,12 +130,12 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Clients successfully imported. Returns an empty response body. |  -  |
+| **204** | Clients successfully imported. Returns no content. |  -  |
 | **400** | Invalid request body. Ensure clients array has at least 1 item and all fields are valid. |  -  |
 | **401** | Unauthorized. Invalid or missing OAuth2 token. |  -  |
 | **403** | Forbidden. Your organization does not have enterprise access. |  -  |

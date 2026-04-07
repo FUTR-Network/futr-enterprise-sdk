@@ -41,12 +41,13 @@ class DocumentsApi:
     def document_controller_upload_document(
         self,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
-        monetized: StrictBool,
+        monetized: Annotated[StrictBool, Field(description="Monetized documents will contribute to building the client's profile")],
         file_hash: StrictStr,
-        derived_key: Annotated[Optional[StrictStr], Field(description="required for end-client use only, enterprise should skip this property")] = None,
-        password: Annotated[Optional[StrictStr], Field(description="user's decryption password")] = None,
-        is_id: Optional[StrictBool] = None,
-        task_id: Optional[StrictStr] = None,
+        x_client_email: Annotated[Optional[StrictStr], Field(description="user's email address (for enterprise use only, end-client should skip this header)")] = None,
+        derived_key: Annotated[Optional[StrictStr], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
+        password: Annotated[Optional[StrictStr], Field(description="user's decryption password (for end-client use only, enterprise should skip this property)")] = None,
+        is_id: Annotated[Optional[StrictBool], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
+        task_id: Annotated[Optional[StrictStr], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -65,17 +66,19 @@ class DocumentsApi:
 
         :param file: (required)
         :type file: bytes
-        :param monetized: (required)
+        :param monetized: Monetized documents will contribute to building the client's profile (required)
         :type monetized: bool
         :param file_hash: (required)
         :type file_hash: str
-        :param derived_key: required for end-client use only, enterprise should skip this property
+        :param x_client_email: user's email address (for enterprise use only, end-client should skip this header)
+        :type x_client_email: str
+        :param derived_key: (for end-client use only, enterprise should skip this property)
         :type derived_key: str
-        :param password: user's decryption password
+        :param password: user's decryption password (for end-client use only, enterprise should skip this property)
         :type password: str
-        :param is_id:
+        :param is_id: (for end-client use only, enterprise should skip this property)
         :type is_id: bool
-        :param task_id:
+        :param task_id: (for end-client use only, enterprise should skip this property)
         :type task_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -103,6 +106,7 @@ class DocumentsApi:
             file=file,
             monetized=monetized,
             file_hash=file_hash,
+            x_client_email=x_client_email,
             derived_key=derived_key,
             password=password,
             is_id=is_id,
@@ -131,12 +135,13 @@ class DocumentsApi:
     def document_controller_upload_document_with_http_info(
         self,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
-        monetized: StrictBool,
+        monetized: Annotated[StrictBool, Field(description="Monetized documents will contribute to building the client's profile")],
         file_hash: StrictStr,
-        derived_key: Annotated[Optional[StrictStr], Field(description="required for end-client use only, enterprise should skip this property")] = None,
-        password: Annotated[Optional[StrictStr], Field(description="user's decryption password")] = None,
-        is_id: Optional[StrictBool] = None,
-        task_id: Optional[StrictStr] = None,
+        x_client_email: Annotated[Optional[StrictStr], Field(description="user's email address (for enterprise use only, end-client should skip this header)")] = None,
+        derived_key: Annotated[Optional[StrictStr], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
+        password: Annotated[Optional[StrictStr], Field(description="user's decryption password (for end-client use only, enterprise should skip this property)")] = None,
+        is_id: Annotated[Optional[StrictBool], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
+        task_id: Annotated[Optional[StrictStr], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -155,17 +160,19 @@ class DocumentsApi:
 
         :param file: (required)
         :type file: bytes
-        :param monetized: (required)
+        :param monetized: Monetized documents will contribute to building the client's profile (required)
         :type monetized: bool
         :param file_hash: (required)
         :type file_hash: str
-        :param derived_key: required for end-client use only, enterprise should skip this property
+        :param x_client_email: user's email address (for enterprise use only, end-client should skip this header)
+        :type x_client_email: str
+        :param derived_key: (for end-client use only, enterprise should skip this property)
         :type derived_key: str
-        :param password: user's decryption password
+        :param password: user's decryption password (for end-client use only, enterprise should skip this property)
         :type password: str
-        :param is_id:
+        :param is_id: (for end-client use only, enterprise should skip this property)
         :type is_id: bool
-        :param task_id:
+        :param task_id: (for end-client use only, enterprise should skip this property)
         :type task_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -193,6 +200,7 @@ class DocumentsApi:
             file=file,
             monetized=monetized,
             file_hash=file_hash,
+            x_client_email=x_client_email,
             derived_key=derived_key,
             password=password,
             is_id=is_id,
@@ -221,12 +229,13 @@ class DocumentsApi:
     def document_controller_upload_document_without_preload_content(
         self,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
-        monetized: StrictBool,
+        monetized: Annotated[StrictBool, Field(description="Monetized documents will contribute to building the client's profile")],
         file_hash: StrictStr,
-        derived_key: Annotated[Optional[StrictStr], Field(description="required for end-client use only, enterprise should skip this property")] = None,
-        password: Annotated[Optional[StrictStr], Field(description="user's decryption password")] = None,
-        is_id: Optional[StrictBool] = None,
-        task_id: Optional[StrictStr] = None,
+        x_client_email: Annotated[Optional[StrictStr], Field(description="user's email address (for enterprise use only, end-client should skip this header)")] = None,
+        derived_key: Annotated[Optional[StrictStr], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
+        password: Annotated[Optional[StrictStr], Field(description="user's decryption password (for end-client use only, enterprise should skip this property)")] = None,
+        is_id: Annotated[Optional[StrictBool], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
+        task_id: Annotated[Optional[StrictStr], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -245,17 +254,19 @@ class DocumentsApi:
 
         :param file: (required)
         :type file: bytes
-        :param monetized: (required)
+        :param monetized: Monetized documents will contribute to building the client's profile (required)
         :type monetized: bool
         :param file_hash: (required)
         :type file_hash: str
-        :param derived_key: required for end-client use only, enterprise should skip this property
+        :param x_client_email: user's email address (for enterprise use only, end-client should skip this header)
+        :type x_client_email: str
+        :param derived_key: (for end-client use only, enterprise should skip this property)
         :type derived_key: str
-        :param password: user's decryption password
+        :param password: user's decryption password (for end-client use only, enterprise should skip this property)
         :type password: str
-        :param is_id:
+        :param is_id: (for end-client use only, enterprise should skip this property)
         :type is_id: bool
-        :param task_id:
+        :param task_id: (for end-client use only, enterprise should skip this property)
         :type task_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -283,6 +294,7 @@ class DocumentsApi:
             file=file,
             monetized=monetized,
             file_hash=file_hash,
+            x_client_email=x_client_email,
             derived_key=derived_key,
             password=password,
             is_id=is_id,
@@ -308,6 +320,7 @@ class DocumentsApi:
         file,
         monetized,
         file_hash,
+        x_client_email,
         derived_key,
         password,
         is_id,
@@ -335,6 +348,8 @@ class DocumentsApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
+        if x_client_email is not None:
+            _header_params['x-client-email'] = x_client_email
         # process the form parameters
         if file is not None:
             _files['file'] = file
