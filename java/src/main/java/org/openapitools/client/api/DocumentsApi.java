@@ -89,7 +89,7 @@ public class DocumentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> File upload successful. Document is processed asynchronously. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td>          File upload accepted after validation and malware scan. Returns a document ID immediately; OCR,         storage, and downstream processing continue asynchronously. Use the returned ID with GET /documents/:id         to poll processing status and fetch extracted details.        </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call documentControllerUploadDocumentCall(@javax.annotation.Nonnull File _file, @javax.annotation.Nonnull Boolean monetized, @javax.annotation.Nonnull String fileHash, @javax.annotation.Nullable String xClientEmail, @javax.annotation.Nullable String derivedKey, @javax.annotation.Nullable String password, @javax.annotation.Nullable Boolean isID, @javax.annotation.Nullable String taskId, final ApiCallback _callback) throws ApiException {
@@ -208,7 +208,7 @@ public class DocumentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> File upload successful. Document is processed asynchronously. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td>          File upload accepted after validation and malware scan. Returns a document ID immediately; OCR,         storage, and downstream processing continue asynchronously. Use the returned ID with GET /documents/:id         to poll processing status and fetch extracted details.        </td><td>  -  </td></tr>
      </table>
      */
     public String documentControllerUploadDocument(@javax.annotation.Nonnull File _file, @javax.annotation.Nonnull Boolean monetized, @javax.annotation.Nonnull String fileHash, @javax.annotation.Nullable String xClientEmail, @javax.annotation.Nullable String derivedKey, @javax.annotation.Nullable String password, @javax.annotation.Nullable Boolean isID, @javax.annotation.Nullable String taskId) throws ApiException {
@@ -233,7 +233,7 @@ public class DocumentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> File upload successful. Document is processed asynchronously. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td>          File upload accepted after validation and malware scan. Returns a document ID immediately; OCR,         storage, and downstream processing continue asynchronously. Use the returned ID with GET /documents/:id         to poll processing status and fetch extracted details.        </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<String> documentControllerUploadDocumentWithHttpInfo(@javax.annotation.Nonnull File _file, @javax.annotation.Nonnull Boolean monetized, @javax.annotation.Nonnull String fileHash, @javax.annotation.Nullable String xClientEmail, @javax.annotation.Nullable String derivedKey, @javax.annotation.Nullable String password, @javax.annotation.Nullable Boolean isID, @javax.annotation.Nullable String taskId) throws ApiException {
@@ -260,7 +260,7 @@ public class DocumentsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> File upload successful. Document is processed asynchronously. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td>          File upload accepted after validation and malware scan. Returns a document ID immediately; OCR,         storage, and downstream processing continue asynchronously. Use the returned ID with GET /documents/:id         to poll processing status and fetch extracted details.        </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call documentControllerUploadDocumentAsync(@javax.annotation.Nonnull File _file, @javax.annotation.Nonnull Boolean monetized, @javax.annotation.Nonnull String fileHash, @javax.annotation.Nullable String xClientEmail, @javax.annotation.Nullable String derivedKey, @javax.annotation.Nullable String password, @javax.annotation.Nullable Boolean isID, @javax.annotation.Nullable String taskId, final ApiCallback<String> _callback) throws ApiException {

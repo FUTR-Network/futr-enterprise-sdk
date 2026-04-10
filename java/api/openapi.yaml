@@ -33,7 +33,11 @@ paths:
               schema:
                 example: 783b69a1-0a...
                 type: string
-          description: File upload successful. Document is processed asynchronously.
+          description: "\n        File upload accepted after validation and malware\
+            \ scan. Returns a document ID immediately; OCR,\n        storage, and\
+            \ downstream processing continue asynchronously. Use the returned ID with\
+            \ GET /documents/:id\n        to poll processing status and fetch extracted\
+            \ details.\n      "
       security:
       - bearer: []
       summary: Uploading a new document

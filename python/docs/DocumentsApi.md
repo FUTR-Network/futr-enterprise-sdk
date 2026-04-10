@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | File upload successful. Document is processed asynchronously. |  -  |
+**201** |          File upload accepted after validation and malware scan. Returns a document ID immediately; OCR,         storage, and downstream processing continue asynchronously. Use the returned ID with GET /documents/:id         to poll processing status and fetch extracted details.        |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
