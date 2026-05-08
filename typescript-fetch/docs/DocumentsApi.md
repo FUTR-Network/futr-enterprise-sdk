@@ -36,11 +36,11 @@ async function example() {
     file: BINARY_DATA_HERE,
     // boolean | Monetized documents will contribute to building the client\\\'s profile
     monetized: true,
-    // string
+    // string | SHA-256 hash of the file content for integrity verification (hex string)
     fileHash: fileHash_example,
     // string | user\'s email address (for enterprise use only, end-client should skip this header) (optional)
     xClientEmail: xClientEmail_example,
-    // string | (for end-client use only, enterprise should skip this property) (optional)
+    // string | derived encryption key for the document               Users without a CMK or are **Enterprises** can skip this property.             For end-clients with a CMK, this should be provided to enable encryption at rest and decryption for agent queries.             For enterprise clients, this property should be skipped.              (optional)
     derivedKey: derivedKey_example,
     // string | user\\\'s decryption password (for end-client use only, enterprise should skip this property) (optional)
     password: password_example,
@@ -69,9 +69,9 @@ example().catch(console.error);
 |------------- | ------------- | ------------- | -------------|
 | **file** | `Blob` |  | [Defaults to `undefined`] |
 | **monetized** | `boolean` | Monetized documents will contribute to building the client\\\&#39;s profile | [Defaults to `undefined`] |
-| **fileHash** | `string` |  | [Defaults to `undefined`] |
+| **fileHash** | `string` | SHA-256 hash of the file content for integrity verification (hex string) | [Defaults to `undefined`] |
 | **xClientEmail** | `string` | user\&#39;s email address (for enterprise use only, end-client should skip this header) | [Optional] [Defaults to `undefined`] |
-| **derivedKey** | `string` | (for end-client use only, enterprise should skip this property) | [Optional] [Defaults to `undefined`] |
+| **derivedKey** | `string` | derived encryption key for the document               Users without a CMK or are **Enterprises** can skip this property.             For end-clients with a CMK, this should be provided to enable encryption at rest and decryption for agent queries.             For enterprise clients, this property should be skipped.              | [Optional] [Defaults to `undefined`] |
 | **password** | `string` | user\\\&#39;s decryption password (for end-client use only, enterprise should skip this property) | [Optional] [Defaults to `undefined`] |
 | **isID** | `boolean` | (for end-client use only, enterprise should skip this property) | [Optional] [Defaults to `undefined`] |
 | **taskId** | `string` | (for end-client use only, enterprise should skip this property) | [Optional] [Defaults to `undefined`] |

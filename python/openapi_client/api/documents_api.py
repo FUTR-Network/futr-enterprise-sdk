@@ -42,9 +42,9 @@ class DocumentsApi:
         self,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         monetized: Annotated[StrictBool, Field(description="Monetized documents will contribute to building the client's profile")],
-        file_hash: StrictStr,
+        file_hash: Annotated[StrictStr, Field(description="SHA-256 hash of the file content for integrity verification (hex string)")],
         x_client_email: Annotated[Optional[StrictStr], Field(description="user's email address (for enterprise use only, end-client should skip this header)")] = None,
-        derived_key: Annotated[Optional[StrictStr], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
+        derived_key: Annotated[Optional[StrictStr], Field(description="derived encryption key for the document               Users without a CMK or are **Enterprises** can skip this property.             For end-clients with a CMK, this should be provided to enable encryption at rest and decryption for agent queries.             For enterprise clients, this property should be skipped.             ")] = None,
         password: Annotated[Optional[StrictStr], Field(description="user's decryption password (for end-client use only, enterprise should skip this property)")] = None,
         is_id: Annotated[Optional[StrictBool], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
         task_id: Annotated[Optional[StrictStr], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
@@ -68,11 +68,11 @@ class DocumentsApi:
         :type file: bytes
         :param monetized: Monetized documents will contribute to building the client's profile (required)
         :type monetized: bool
-        :param file_hash: (required)
+        :param file_hash: SHA-256 hash of the file content for integrity verification (hex string) (required)
         :type file_hash: str
         :param x_client_email: user's email address (for enterprise use only, end-client should skip this header)
         :type x_client_email: str
-        :param derived_key: (for end-client use only, enterprise should skip this property)
+        :param derived_key: derived encryption key for the document               Users without a CMK or are **Enterprises** can skip this property.             For end-clients with a CMK, this should be provided to enable encryption at rest and decryption for agent queries.             For enterprise clients, this property should be skipped.             
         :type derived_key: str
         :param password: user's decryption password (for end-client use only, enterprise should skip this property)
         :type password: str
@@ -136,9 +136,9 @@ class DocumentsApi:
         self,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         monetized: Annotated[StrictBool, Field(description="Monetized documents will contribute to building the client's profile")],
-        file_hash: StrictStr,
+        file_hash: Annotated[StrictStr, Field(description="SHA-256 hash of the file content for integrity verification (hex string)")],
         x_client_email: Annotated[Optional[StrictStr], Field(description="user's email address (for enterprise use only, end-client should skip this header)")] = None,
-        derived_key: Annotated[Optional[StrictStr], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
+        derived_key: Annotated[Optional[StrictStr], Field(description="derived encryption key for the document               Users without a CMK or are **Enterprises** can skip this property.             For end-clients with a CMK, this should be provided to enable encryption at rest and decryption for agent queries.             For enterprise clients, this property should be skipped.             ")] = None,
         password: Annotated[Optional[StrictStr], Field(description="user's decryption password (for end-client use only, enterprise should skip this property)")] = None,
         is_id: Annotated[Optional[StrictBool], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
         task_id: Annotated[Optional[StrictStr], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
@@ -162,11 +162,11 @@ class DocumentsApi:
         :type file: bytes
         :param monetized: Monetized documents will contribute to building the client's profile (required)
         :type monetized: bool
-        :param file_hash: (required)
+        :param file_hash: SHA-256 hash of the file content for integrity verification (hex string) (required)
         :type file_hash: str
         :param x_client_email: user's email address (for enterprise use only, end-client should skip this header)
         :type x_client_email: str
-        :param derived_key: (for end-client use only, enterprise should skip this property)
+        :param derived_key: derived encryption key for the document               Users without a CMK or are **Enterprises** can skip this property.             For end-clients with a CMK, this should be provided to enable encryption at rest and decryption for agent queries.             For enterprise clients, this property should be skipped.             
         :type derived_key: str
         :param password: user's decryption password (for end-client use only, enterprise should skip this property)
         :type password: str
@@ -230,9 +230,9 @@ class DocumentsApi:
         self,
         file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         monetized: Annotated[StrictBool, Field(description="Monetized documents will contribute to building the client's profile")],
-        file_hash: StrictStr,
+        file_hash: Annotated[StrictStr, Field(description="SHA-256 hash of the file content for integrity verification (hex string)")],
         x_client_email: Annotated[Optional[StrictStr], Field(description="user's email address (for enterprise use only, end-client should skip this header)")] = None,
-        derived_key: Annotated[Optional[StrictStr], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
+        derived_key: Annotated[Optional[StrictStr], Field(description="derived encryption key for the document               Users without a CMK or are **Enterprises** can skip this property.             For end-clients with a CMK, this should be provided to enable encryption at rest and decryption for agent queries.             For enterprise clients, this property should be skipped.             ")] = None,
         password: Annotated[Optional[StrictStr], Field(description="user's decryption password (for end-client use only, enterprise should skip this property)")] = None,
         is_id: Annotated[Optional[StrictBool], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
         task_id: Annotated[Optional[StrictStr], Field(description="(for end-client use only, enterprise should skip this property)")] = None,
@@ -256,11 +256,11 @@ class DocumentsApi:
         :type file: bytes
         :param monetized: Monetized documents will contribute to building the client's profile (required)
         :type monetized: bool
-        :param file_hash: (required)
+        :param file_hash: SHA-256 hash of the file content for integrity verification (hex string) (required)
         :type file_hash: str
         :param x_client_email: user's email address (for enterprise use only, end-client should skip this header)
         :type x_client_email: str
-        :param derived_key: (for end-client use only, enterprise should skip this property)
+        :param derived_key: derived encryption key for the document               Users without a CMK or are **Enterprises** can skip this property.             For end-clients with a CMK, this should be provided to enable encryption at rest and decryption for agent queries.             For enterprise clients, this property should be skipped.             
         :type derived_key: str
         :param password: user's decryption password (for end-client use only, enterprise should skip this property)
         :type password: str

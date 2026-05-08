@@ -78,9 +78,9 @@ with openapi_client.ApiClient(configuration) as api_client:
     api_instance = openapi_client.DocumentsApi(api_client)
     file = None # bytes | 
     monetized = True # bool | Monetized documents will contribute to building the client's profile
-    file_hash = 'file_hash_example' # str | 
+    file_hash = 'file_hash_example' # str | SHA-256 hash of the file content for integrity verification (hex string)
     x_client_email = 'x_client_email_example' # str | user's email address (for enterprise use only, end-client should skip this header) (optional)
-    derived_key = 'derived_key_example' # str | (for end-client use only, enterprise should skip this property) (optional)
+    derived_key = 'derived_key_example' # str | derived encryption key for the document               Users without a CMK or are **Enterprises** can skip this property.             For end-clients with a CMK, this should be provided to enable encryption at rest and decryption for agent queries.             For enterprise clients, this property should be skipped.              (optional)
     password = 'password_example' # str | user's decryption password (for end-client use only, enterprise should skip this property) (optional)
     is_id = True # bool | (for end-client use only, enterprise should skip this property) (optional)
     task_id = 'task_id_example' # str | (for end-client use only, enterprise should skip this property) (optional)

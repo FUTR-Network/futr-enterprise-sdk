@@ -35,9 +35,9 @@ public class Example {
     DocumentsApi apiInstance = new DocumentsApi(defaultClient);
     File _file = new File("/path/to/file"); // File | 
     Boolean monetized = true; // Boolean | Monetized documents will contribute to building the client's profile
-    String fileHash = "fileHash_example"; // String | 
+    String fileHash = "fileHash_example"; // String | SHA-256 hash of the file content for integrity verification (hex string)
     String xClientEmail = "xClientEmail_example"; // String | user's email address (for enterprise use only, end-client should skip this header)
-    String derivedKey = "derivedKey_example"; // String | (for end-client use only, enterprise should skip this property)
+    String derivedKey = "derivedKey_example"; // String | derived encryption key for the document               Users without a CMK or are **Enterprises** can skip this property.             For end-clients with a CMK, this should be provided to enable encryption at rest and decryption for agent queries.             For enterprise clients, this property should be skipped.             
     String password = "password_example"; // String | user's decryption password (for end-client use only, enterprise should skip this property)
     Boolean isID = true; // Boolean | (for end-client use only, enterprise should skip this property)
     String taskId = "taskId_example"; // String | (for end-client use only, enterprise should skip this property)
@@ -61,9 +61,9 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **_file** | **File**|  | |
 | **monetized** | **Boolean**| Monetized documents will contribute to building the client&#39;s profile | |
-| **fileHash** | **String**|  | |
+| **fileHash** | **String**| SHA-256 hash of the file content for integrity verification (hex string) | |
 | **xClientEmail** | **String**| user&#39;s email address (for enterprise use only, end-client should skip this header) | [optional] |
-| **derivedKey** | **String**| (for end-client use only, enterprise should skip this property) | [optional] |
+| **derivedKey** | **String**| derived encryption key for the document               Users without a CMK or are **Enterprises** can skip this property.             For end-clients with a CMK, this should be provided to enable encryption at rest and decryption for agent queries.             For enterprise clients, this property should be skipped.              | [optional] |
 | **password** | **String**| user&#39;s decryption password (for end-client use only, enterprise should skip this property) | [optional] |
 | **isID** | **Boolean**| (for end-client use only, enterprise should skip this property) | [optional] |
 | **taskId** | **String**| (for end-client use only, enterprise should skip this property) | [optional] |

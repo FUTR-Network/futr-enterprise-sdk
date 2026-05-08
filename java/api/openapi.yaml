@@ -221,6 +221,19 @@ components:
       - clients
       type: object
     DocumentController_uploadDocument_request:
+      description: "\n        Using multipart/form-data, upload a document file along\
+        \ with these fields:\n        - file: The document to upload (PDF, JPEG, PNG,\
+        \ DOCX).\n        - monetized: Boolean indicating if the document is monetized\
+        \ (contributes to user profile), at the moment always true.\n        - fileHash:\
+        \ SHA-256 hash of the file content for integrity verification (hex string).\n\
+        \        - derivedKey: (Optional) Derived encryption key for the document,\
+        \ encrypted with the user's public key. Required for end-clients with a CMK\
+        \ to enable encryption at rest and decryption for agent queries. Enterprises\
+        \ should skip this property.\n        - password: (Optional) User's decryption\
+        \ password for end-clients. Enterprises should skip this property.\n     \
+        \   - isID: (Optional) Boolean indicating if the document is an ID for end-clients.\
+        \ Enterprises should skip this property.\n        - taskId: (Optional) String\
+        \ task ID for end-clients. Enterprises should skip this property.\n      "
       properties:
         file:
           format: binary
@@ -230,9 +243,15 @@ components:
             profile
           type: boolean
         fileHash:
+          description: SHA-256 hash of the file content for integrity verification
+            (hex string)
           type: string
         derivedKey:
-          description: "(for end-client use only, enterprise should skip this property)"
+          description: "derived encryption key for the document  \n            Users\
+            \ without a CMK or are **Enterprises** can skip this property.\n     \
+            \       For end-clients with a CMK, this should be provided to enable\
+            \ encryption at rest and decryption for agent queries.\n            For\
+            \ enterprise clients, this property should be skipped.\n            "
           type: string
         password:
           description: "user's decryption password (for end-client use only, enterprise\

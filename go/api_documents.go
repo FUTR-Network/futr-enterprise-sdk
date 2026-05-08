@@ -47,6 +47,7 @@ func (r ApiDocumentControllerUploadDocumentRequest) Monetized(monetized bool) Ap
 	return r
 }
 
+// SHA-256 hash of the file content for integrity verification (hex string)
 func (r ApiDocumentControllerUploadDocumentRequest) FileHash(fileHash string) ApiDocumentControllerUploadDocumentRequest {
 	r.fileHash = &fileHash
 	return r
@@ -58,7 +59,7 @@ func (r ApiDocumentControllerUploadDocumentRequest) XClientEmail(xClientEmail st
 	return r
 }
 
-// (for end-client use only, enterprise should skip this property)
+// derived encryption key for the document               Users without a CMK or are **Enterprises** can skip this property.             For end-clients with a CMK, this should be provided to enable encryption at rest and decryption for agent queries.             For enterprise clients, this property should be skipped.             
 func (r ApiDocumentControllerUploadDocumentRequest) DerivedKey(derivedKey string) ApiDocumentControllerUploadDocumentRequest {
 	r.derivedKey = &derivedKey
 	return r

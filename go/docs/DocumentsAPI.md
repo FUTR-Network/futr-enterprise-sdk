@@ -29,9 +29,9 @@ import (
 func main() {
 	file := os.NewFile(1234, "some_file") // *os.File | 
 	monetized := true // bool | Monetized documents will contribute to building the client's profile
-	fileHash := "fileHash_example" // string | 
+	fileHash := "fileHash_example" // string | SHA-256 hash of the file content for integrity verification (hex string)
 	xClientEmail := "xClientEmail_example" // string | user's email address (for enterprise use only, end-client should skip this header) (optional)
-	derivedKey := "derivedKey_example" // string | (for end-client use only, enterprise should skip this property) (optional)
+	derivedKey := "derivedKey_example" // string | derived encryption key for the document               Users without a CMK or are **Enterprises** can skip this property.             For end-clients with a CMK, this should be provided to enable encryption at rest and decryption for agent queries.             For enterprise clients, this property should be skipped.              (optional)
 	password := "password_example" // string | user's decryption password (for end-client use only, enterprise should skip this property) (optional)
 	isID := true // bool | (for end-client use only, enterprise should skip this property) (optional)
 	taskId := "taskId_example" // string | (for end-client use only, enterprise should skip this property) (optional)
@@ -61,9 +61,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **file** | ***os.File** |  | 
  **monetized** | **bool** | Monetized documents will contribute to building the client&#39;s profile | 
- **fileHash** | **string** |  | 
+ **fileHash** | **string** | SHA-256 hash of the file content for integrity verification (hex string) | 
  **xClientEmail** | **string** | user&#39;s email address (for enterprise use only, end-client should skip this header) | 
- **derivedKey** | **string** | (for end-client use only, enterprise should skip this property) | 
+ **derivedKey** | **string** | derived encryption key for the document               Users without a CMK or are **Enterprises** can skip this property.             For end-clients with a CMK, this should be provided to enable encryption at rest and decryption for agent queries.             For enterprise clients, this property should be skipped.              | 
  **password** | **string** | user&#39;s decryption password (for end-client use only, enterprise should skip this property) | 
  **isID** | **bool** | (for end-client use only, enterprise should skip this property) | 
  **taskId** | **string** | (for end-client use only, enterprise should skip this property) | 
