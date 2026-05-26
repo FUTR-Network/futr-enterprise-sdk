@@ -46,58 +46,58 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * ImportClientDTO
+ * DeleteDocumentDto
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-05-26T17:32:44.343477626Z[Etc/UTC]", comments = "Generator version: 7.21.0")
-public class ImportClientDTO {
-  public static final String SERIALIZED_NAME_CLIENT_EMAIL = "clientEmail";
-  @SerializedName(SERIALIZED_NAME_CLIENT_EMAIL)
+public class DeleteDocumentDto {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nonnull
-  private String clientEmail;
+  private String id;
 
-  public static final String SERIALIZED_NAME_CLIENT_ID = "clientId";
-  @SerializedName(SERIALIZED_NAME_CLIENT_ID)
-  @javax.annotation.Nonnull
-  private String clientId;
+  public static final String SERIALIZED_NAME_DELETE_METADATA = "deleteMetadata";
+  @SerializedName(SERIALIZED_NAME_DELETE_METADATA)
+  @javax.annotation.Nullable
+  private Boolean deleteMetadata = false;
 
-  public ImportClientDTO() {
+  public DeleteDocumentDto() {
   }
 
-  public ImportClientDTO clientEmail(@javax.annotation.Nonnull String clientEmail) {
-    this.clientEmail = clientEmail;
+  public DeleteDocumentDto id(@javax.annotation.Nonnull String id) {
+    this.id = id;
     return this;
   }
 
   /**
-   * Email address of the client to import
-   * @return clientEmail
+   * Document ID to delete
+   * @return id
    */
   @javax.annotation.Nonnull
-  public String getClientEmail() {
-    return clientEmail;
+  public String getId() {
+    return id;
   }
 
-  public void setClientEmail(@javax.annotation.Nonnull String clientEmail) {
-    this.clientEmail = clientEmail;
+  public void setId(@javax.annotation.Nonnull String id) {
+    this.id = id;
   }
 
 
-  public ImportClientDTO clientId(@javax.annotation.Nonnull String clientId) {
-    this.clientId = clientId;
+  public DeleteDocumentDto deleteMetadata(@javax.annotation.Nullable Boolean deleteMetadata) {
+    this.deleteMetadata = deleteMetadata;
     return this;
   }
 
   /**
-   * Unique external identifier for the client. Used to track and associate this consumer with your external enterprise system. This ID is stored in the system and can be used for reporting and client tracking purposes.
-   * @return clientId
+   * Whether to also delete metadata (true) or just soft-delete the file (false)
+   * @return deleteMetadata
    */
-  @javax.annotation.Nonnull
-  public String getClientId() {
-    return clientId;
+  @javax.annotation.Nullable
+  public Boolean getDeleteMetadata() {
+    return deleteMetadata;
   }
 
-  public void setClientId(@javax.annotation.Nonnull String clientId) {
-    this.clientId = clientId;
+  public void setDeleteMetadata(@javax.annotation.Nullable Boolean deleteMetadata) {
+    this.deleteMetadata = deleteMetadata;
   }
 
 
@@ -110,22 +110,22 @@ public class ImportClientDTO {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ImportClientDTO importClientDTO = (ImportClientDTO) o;
-    return Objects.equals(this.clientEmail, importClientDTO.clientEmail) &&
-        Objects.equals(this.clientId, importClientDTO.clientId);
+    DeleteDocumentDto deleteDocumentDto = (DeleteDocumentDto) o;
+    return Objects.equals(this.id, deleteDocumentDto.id) &&
+        Objects.equals(this.deleteMetadata, deleteDocumentDto.deleteMetadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(clientEmail, clientId);
+    return Objects.hash(id, deleteMetadata);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ImportClientDTO {\n");
-    sb.append("    clientEmail: ").append(toIndentedString(clientEmail)).append("\n");
-    sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
+    sb.append("class DeleteDocumentDto {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    deleteMetadata: ").append(toIndentedString(deleteMetadata)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -144,45 +144,42 @@ public class ImportClientDTO {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("clientEmail", "clientId"));
+    openapiFields = new HashSet<String>(Arrays.asList("id", "deleteMetadata"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("clientEmail", "clientId"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("id"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ImportClientDTO
+   * @throws IOException if the JSON Element is invalid with respect to DeleteDocumentDto
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ImportClientDTO.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ImportClientDTO is not found in the empty JSON string", ImportClientDTO.openapiRequiredFields.toString()));
+        if (!DeleteDocumentDto.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in DeleteDocumentDto is not found in the empty JSON string", DeleteDocumentDto.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ImportClientDTO.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ImportClientDTO` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!DeleteDocumentDto.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `DeleteDocumentDto` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ImportClientDTO.openapiRequiredFields) {
+      for (String requiredField : DeleteDocumentDto.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("clientEmail").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `clientEmail` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientEmail").toString()));
-      }
-      if (!jsonObj.get("clientId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `clientId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientId").toString()));
+      if (!jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
   }
 
@@ -190,22 +187,22 @@ public class ImportClientDTO {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ImportClientDTO.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ImportClientDTO' and its subtypes
+       if (!DeleteDocumentDto.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DeleteDocumentDto' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ImportClientDTO> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ImportClientDTO.class));
+       final TypeAdapter<DeleteDocumentDto> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DeleteDocumentDto.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ImportClientDTO>() {
+       return (TypeAdapter<T>) new TypeAdapter<DeleteDocumentDto>() {
            @Override
-           public void write(JsonWriter out, ImportClientDTO value) throws IOException {
+           public void write(JsonWriter out, DeleteDocumentDto value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ImportClientDTO read(JsonReader in) throws IOException {
+           public DeleteDocumentDto read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -216,18 +213,18 @@ public class ImportClientDTO {
   }
 
   /**
-   * Create an instance of ImportClientDTO given an JSON string
+   * Create an instance of DeleteDocumentDto given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of ImportClientDTO
-   * @throws IOException if the JSON string is invalid with respect to ImportClientDTO
+   * @return An instance of DeleteDocumentDto
+   * @throws IOException if the JSON string is invalid with respect to DeleteDocumentDto
    */
-  public static ImportClientDTO fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ImportClientDTO.class);
+  public static DeleteDocumentDto fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DeleteDocumentDto.class);
   }
 
   /**
-   * Convert an instance of ImportClientDTO to an JSON string
+   * Convert an instance of DeleteDocumentDto to an JSON string
    *
    * @return JSON string
    */
