@@ -30,7 +30,6 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "AuthDTO",
-    "DeleteDocumentDto",
     "ImportClientDTO",
     "ImportClientsDTO",
 ]
@@ -52,7 +51,6 @@ from openapi_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
 from openapi_client.models.auth_dto import AuthDTO as AuthDTO
-from openapi_client.models.delete_document_dto import DeleteDocumentDto as DeleteDocumentDto
 from openapi_client.models.import_client_dto import ImportClientDTO as ImportClientDTO
 from openapi_client.models.import_clients_dto import ImportClientsDTO as ImportClientsDTO
 

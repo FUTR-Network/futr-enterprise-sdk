@@ -79,7 +79,6 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AuthDTO](docs/AuthDTO.md)
- - [DeleteDocumentDto](docs/DeleteDocumentDto.md)
  - [ImportClientDTO](docs/ImportClientDTO.md)
  - [ImportClientsDTO](docs/ImportClientsDTO.md)
 

@@ -3,14 +3,12 @@ apis/DocumentsApi.ts
 apis/EnterpriseApi.ts
 apis/index.ts
 docs/AuthDTO.md
-docs/DeleteDocumentDto.md
 docs/DocumentsApi.md
 docs/EnterpriseApi.md
 docs/ImportClientDTO.md
 docs/ImportClientsDTO.md
 index.ts
 models/AuthDTO.ts
-models/DeleteDocumentDto.ts
 models/ImportClientDTO.ts
 models/ImportClientsDTO.ts
 models/index.ts

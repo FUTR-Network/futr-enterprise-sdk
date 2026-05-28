@@ -160,19 +160,6 @@ paths:
       - application/json
 components:
   schemas:
-    DeleteDocumentDto:
-      properties:
-        id:
-          description: Document ID to delete
-          type: string
-        deleteMetadata:
-          default: false
-          description: Whether to also delete metadata (true) or just soft-delete
-            the file (false)
-          type: boolean
-      required:
-      - id
-      type: object
     AuthDTO:
       example:
         clientId: abc123xyz789
