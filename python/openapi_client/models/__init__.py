@@ -14,6 +14,7 @@
 
 # import models into model package
 from openapi_client.models.auth_dto import AuthDTO
+from openapi_client.models.delete_document_dto import DeleteDocumentDto
 from openapi_client.models.import_client_dto import ImportClientDTO
 from openapi_client.models.import_clients_dto import ImportClientsDTO
 

@@ -151,6 +151,26 @@ paths:
       - Enterprise
 components:
   schemas:
+    DeleteDocumentDto:
+      properties:
+        id:
+          description: Document ID to delete
+          type: string
+        target:
+          default: file
+          description: |-
+            What to delete:
+            - 'file' (default): delete only the stored file from disk
+            - 'metadata': delete only the metadata (OCR results, markdown chunks) without touching the file
+            - 'both': delete the file and all associated metadata
+          enum:
+          - file
+          - metadata
+          - both
+          type: string
+      required:
+      - id
+      type: object
     AuthDTO:
       example:
         clientId: abc123xyz789
