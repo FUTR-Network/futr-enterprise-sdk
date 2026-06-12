@@ -48,7 +48,7 @@ import org.openapitools.client.JSON;
 /**
  * DeleteDocumentDto
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-10T19:03:33.558870164Z[Etc/UTC]", comments = "Generator version: 7.21.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-06-12T19:07:59.838394581Z[Etc/UTC]", comments = "Generator version: 7.21.0")
 public class DeleteDocumentDto {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
